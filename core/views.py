@@ -1,6 +1,8 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
 
@@ -86,3 +88,55 @@ def comment_delete(request, pk):
     comment = get_object_or_404(Comment, pk=pk, user=request.user)
     comment.delete()
     return redirect('feed')
+
+# View for Liking a Post
+@login_required
+def like(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    like_obj, created = Like.objects.get_or_create(user=request.user, post=post)
+    if not created:
+        like_obj.delete()
+    like_count = Like.objects.filter(post=post).count()
+    return redirect('feed')
+
+# View for showing a user's profile
+def user_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    posts = Post.objects.filter(user=user)
+    likes = Like.objects.filter(user=user)
+    context = {
+        'profile_user': user,
+        'posts': posts,
+        'likes': likes,
+    }
+    return render(request, 'user_profile.html', context)
+
+# View for showing a user's profile, for logged-out users
+def guest_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    posts = Post.objects.filter(user=user)
+    return render(request, 'guest_profile.html', {'profile_user': user, 'posts': posts})
+
+# View for changing a user's username
+@login_required
+def change_username(request):
+    if request.method == 'POST':
+        form = UsernameChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Update session to keep the user logged in.
+            messages.success(request, 'Your username has been successfully updated.')
+            return redirect('user_profile', user.username)
+    else:
+        form = UsernameChangeForm(instance=request.user)
+    return render(request, 'change_username.html', {'form': form})
+
+# View for searching users
+def search_users(request):
+    query = request.GET.get('q', '')
+    users = User.objects.filter(
+        Q(username__icontains=query)
+        | Q(first_name__icontains=query)
+        | Q(last_name__icontains=query)
+    )
+    return render(request, 'search_users.html', {'users': users, 'query': query})
