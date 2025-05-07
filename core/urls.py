@@ -27,7 +27,7 @@ urlpatterns = [
     # Delete Comment
     path('comment/<int:pk>/delete/', views.comment_delete, name='comment_delete'),
     # Like Post
-    path('post/<int:pk>/like/>', views.like, name='like'),
+    path('post/<int:pk>/like/', views.like, name='like'),
     # Redirecting to Latest Username
     re_path(r'^profile/(?!change-username/)(?P<username>\w+)/$', views.user_profile, name='user_profile'),
     # For fetching user from the username on posts
