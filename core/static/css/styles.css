@@ -1,0 +1,148 @@
+﻿/* Dark Theme Styles */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Main container background */
+.container, .container-fluid {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Card styling */
+.card {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.card-header {
+  background-color: #383838;
+  border-color: #444;
+}
+
+.card-footer {
+  background-color: #383838;
+  border-color: #444;
+}
+
+/* Form controls */
+.form-control, .form-select {
+  background-color: #333;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #3a3a3a;
+  border-color: #666;
+  color: #e0e0e0;
+  box-shadow: 0 0 0 0.25rem rgba(66, 70, 73, 0.5);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-secondary {
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+.btn-outline-light {
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn-outline-light:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* Tables */
+.table {
+  color: #e0e0e0;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Links */
+a {
+  color: #8ab4f8;
+}
+
+a:hover {
+  color: #aecbfa;
+}
+
+/* Alerts */
+.alert-success {
+  background-color: #1e4620;
+  border-color: #2a623d;
+  color: #d1e7dd;
+}
+
+.alert-danger {
+  background-color: #5c1a1d;
+  border-color: #842029;
+  color: #f8d7da;
+}
+
+.alert-warning {
+  background-color: #664d03;
+  border-color: #997404;
+  color: #fff3cd;
+}
+
+.alert-info {
+  background-color: #055160;
+  border-color: #087990;
+  color: #cff4fc;
+}
+
+/* List groups */
+.list-group-item {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+/* Modals */
+.modal-content {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.modal-header, .modal-footer {
+  border-color: #444;
+}
+
+/* Navbar tweaks */
+.navbar-dark {
+  background-color: #1a1a1a !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
