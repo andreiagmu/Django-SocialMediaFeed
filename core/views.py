@@ -1,9 +1,13 @@
+from django.contrib import messages
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
+
+from core.forms import PostForm, CommentForm, UsernameChangeForm
+from core.models import Post, Comment, Like
 
 
 # Create your views here.
