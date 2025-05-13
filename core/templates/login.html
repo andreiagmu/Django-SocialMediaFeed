@@ -6,12 +6,12 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Login</h2>
+          <h2 class="card-title">Log in</h2>
           <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <p>Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <p>Don't have an account? <a href="{% url 'signup' %}">Create Account</a></p>
+            <button type="submit" class="btn btn-primary">Log in</button>
           </form>
         </div>
       </div>
