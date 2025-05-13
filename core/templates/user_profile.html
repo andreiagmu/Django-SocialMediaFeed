@@ -11,7 +11,7 @@
       {% endif %}
 
       <h4>Posts</h4>
-      {% for post in posts %}
+      {% for post in posts reversed %}
         <div class="card mb-3">
           <div class="card-body">
             <p class="card-text">{{ post.content }}</p>
@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-6">
       <h4>Liked Posts</h4>
-      {% for like in likes %}
+      {% for like in likes reversed %}
         <div class="card mb-3">
           <div class="card-body">
             <p class="card-text">{{ like.post.content }}</p>
