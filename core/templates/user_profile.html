@@ -28,7 +28,7 @@
         <div class="card mb-3">
           <div class="card-body">
             <p class="card-text">{{ like.post.content }}</p>
-            <p class="card-text">Posted by: {{ like.post.user.username }} on {{ like.post.created_at }}</p>
+            <p class="card-text">Posted by: <a href="{% url 'user_profile' like.post.user.username %}">{{ like.post.user.username }}</a> on {{ like.post.created_at }}</p>
           </div>
         </div>
       {% empty %}
